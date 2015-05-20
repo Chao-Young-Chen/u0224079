@@ -56,3 +56,15 @@
 - 估計：5天
 - 描述：當分數小於及格分，跳出注意事項及叫車提示
 - 優先性：10
+
+Leankit
+
+- https://nationalkaohsiungfirs6606.leankit.com/Boards/View/198563178#workflow-view
+
+Demo
+
+- http://embed.plnkr.co/4306P8Hq7QO4KmCvpywb/preview
+ 
+Burndown chart
+
+- https://docs.google.com/spreadsheets/d/1N23SVxueESLRwgxuP7iuK7AePDa7nM5ONZ2M1a-a9I4/edit#gid=1779067574
