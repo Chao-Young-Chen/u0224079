@@ -1,65 +1,407 @@
 <!DOCTYPE html>
 <html ng-app="plunker">
 
-  <head>
-    <meta charset="utf-8" />
-    <title>AngularJS Plunker</title>
-    <script>document.write('<base href="' + document.location + '" />');</script>
-    <link rel="stylesheet" href="style.css" />
-    <script data-require="angular.js@1.3.x" src="https://code.angularjs.org/1.3.15/angular.js" data-semver="1.3.15"></script>
-    <script src="app.js"></script>
-  </head>
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Plunker</title>
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.3.x" src="https://code.angularjs.org/1.3.15/angular.js" data-semver="1.3.15"></script>
+  <script src="app.js"></script>
+  <script src="lib/angular/angular.js"></script>
 
-  <body ng-controller="MainCtrl">
-    <p>Hello welcome to sprit test!</p>
-    <div ng-hide="start">
-    <button type="submit" ng-click =  "start = !start" >Start test</button><hr>
-    </div>
+  <style type="text/css">
+    button {
+      font-size: 14pt;
+    }
+  </style>
+  <!-- 將button的字體大小全部預設為14pt -->
+</head>
+
+<body ng-controller="MainCtrl" bgcolor="beige" word-break: normal>
+  <!-- word-break: normal讓文字自動斷行 -->
+  <h1><b><p>心理測驗大匯集!</p></b></h1>
+  <div ng-style="{'font-size': x+'pt'}">
+    <!-- 設定文字大小為變數x+'pt'(點) 詳細調整在最底下 -->
+
+    <button ng-click="start = !start" ng-hide="start">開始測驗</button>
+    <br>
     <div ng-show="start">
-    
-    Test1<br>
-    <img src = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xap1/v/t1.0-1/p160x160/10557232_496122660517625_2226774614539332256_n.jpg?oh=df7bbe5cd28966f17efee54b943dcc25&oe=55B47CDF&__gda__=1437080282_60de96e4d8dd3ae3226e6dc7a34f127b">
-    <button type="submit">YES</button>
-    <button type="submit">NO</button><hr>
-    
-    Test2<br>
-    <img src = "http://b0.rimg.tw/pdps_class5_2009/53c0d8cc.gif"><br>
-    <input placeholder= "輸入第一個數字"/><br>
-    <br><input placeholder= "輸入最後一個數字"/>
-    <button type="submit">確認答案</button><hr>
-    
-    Test3<br>
-    <embed src= "https://www.youtube.com/embed/1b84ovEKC0A"width="640" height="360"></embed><br>
-    影片中是什麼品種的狗？
-    <br>1.臘腸狗
-    <br>2.拉布拉多
-    <br>3.哈士奇
-    <br>4.紅貴賓<br>
-    <input placeholder= "輸入答案題號"/>
-    <button type="submit">確認答案</button><hr>
-    
-    Test4<br>
-    <img src = "http://www.tgsc.com.tw/usb20/attachments/month_0910/09102210558b0c43e665d15500.gif"width="640" height="360"><br>
-    上圗中哪種顏色占整個圖最多？
-    <br>1.白
-    <br>2.紅
-    <br>3.藍
-    <br>4.灰<br>
-    <input placeholder= "輸入答案題號"/>
-    <button type="submit">確認答案</button><hr>
-    
-    Test5<br>
-    <img src = "http://fc02.deviantart.net/fs70/f/2012/149/e/a/fluffy_confused_kitten_gif_4_by_wonderfuday-d51jx4w.gif"><br>
-    動圖中的貓咪看的東西是什麼顏色
-    <br>1.白
-    <br>2.紅
-    <br>3.藍
-    <br>4.灰<br>
-    <input placeholder= "輸入答案題號"/>
-    <button type="submit">確認答案</button><hr>
-    
-</div>
-    
-  </body>
+      <!-- 利用ng-hide和ng-show  當按鈕按下時雙方交換顯示 -->
+      直接跳
+      <select ng-model="selection" ng-options="item for item in items">
+      </select>
+      <!-- 建立下拉式選項  並在js建立items陣列 -->
+
+      <hr/>
+      <div class="animate-switch-container" ng-switch on="selection">
+        <br>
+        <!-- ng-switch on篩選js中selection內容 -->
+
+
+        <div ng-switch-when="第一題">
+          <!-- ng-switch-when當選擇為"第一題"-->
+          Test1
+          <br><b>自主人格測試<br></b>
+          <img src="http://www.zuopy.com/cover/142.jpg" width='bold' height='bold'>
+          <br>
+          <div ng-hide="A1">
+            <!-- ng-hide讓所有答案按鈕預設顯示 -->
+            <div ng-hide="A2">
+              <div ng-hide="A3">
+                <div ng-hide="A4">
+                  <button ng-click="A1 = !A1">桌上雜物</button>
+                  <!-- 當按下時ng-hide由false轉為true  答案紐隱藏 -->
+                  <button ng-click="A2 = !A2">書本</button>
+                  <button ng-click="A3 = !A3">閱讀的女孩</button>
+                  <button ng-click="A4 = !A4">男爵臉孔</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul ng-if="A1">
+            <!-- 由於ng-hide="A1"由false轉為true  ng-if=true便會顯示原本隱藏的內容 -->
+            <b>你選擇了「桌上雜物」<br></b> 你具有很強的科學性思考，所有事物在你的認知中都必須要經過檢驗才可以成真，你不會輕易的對某一件事情下結論，你會再三求證與確定；在人格上，你屬於進取心很強的，你會去挑戰大家不敢做的事情，因為對你而言，人生就是一場冒險，太安逸的人生太無聊了！
+          </ul>
+          <ul ng-if="A2">
+            <b>你選擇了「書本」<br></b> 你屬於具有非常特殊性思考的人，你的想法總是領先身旁的人很多，往往都要過了一陣子大家才能趕上你的思考邏輯；在人格上，你是天生型的領導者，因為你的思考模式影響的緣故，你總是比所有人都先想到下一步，所以自然而然大家對你會有強大的依賴感
+          </ul>
+          <ul ng-if="A3">
+            <b>你選擇了「閱讀的女孩」<br></b> 你屬於具有強大適應功能的思考邏輯，在遭遇到困難或是挫折時，你可以很迅速的從腦海中建構出解決辦法；在人格上，你屬於喜歡去嘗試不同領域和新知識的人，你不喜歡一成不變，因為你總是習慣去尋求創新的事物。
+          </ul>
+          <ul ng-if="A4">
+            <b>你選擇了「男爵臉孔」<br></b> 你屬於具有很強大理性思考的人，無論是任何事情，你都會以最冷靜理性的方式去思考，選擇失誤最小的方式；在人格上，你有很強的邏輯推演特質，身旁的人都非常喜歡與你傾訴問題，因為你的回答總是可以給他們最佳的建議。
+          </ul>
+          <hr>
+
+          <button ng-click="change1()">重新作答</button>
+          <!-- 利用js建立function 將selection重新跳第一題 -->
+          <button ng-click="change2()">下一題</button>
+          <!-- 利用js建立function 將selection直接跳轉下一題 -->
+        </div>
+
+
+
+        <div ng-switch-when="第二題">
+          Test2
+          <br><b>直覺性格測試<br></b>
+          <img src="http://www.zuopy.com/cover/135.jpg" width='bold' height='bold'>
+          <br>
+          <div ng-hide="A1">
+            <div ng-hide="A2">
+              <div ng-hide="A3">
+                <div ng-hide="A4">
+                  <button ng-click="A1 = !A1">骷髏頭</button>
+                  <button ng-click="A2 = !A2">兩個人頭</button>
+                  <button ng-click="A3 = !A3">兩個裸體</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul ng-if="A1">
+            <b>你選擇了「骷髏頭」<br></b> 你的個性隨和又大方，對人時時刻刻都面帶微笑，你很容易相信別人，但也因為這樣你討厭別人對你撒謊，不過由於你的軟心腸，就算受委屈你最後還是會原諒對方。 你心思細膩，很多事情你經常藏在心底也不會說出來，但面對親密的人你的情緒起伏比較大，不過因為這時你最放鬆才會這樣展現任性的一面。你對愛情的感應比較遲鈍，但心思卻很靈敏，對喜歡的人呵護有佳，只要對方有需要的時候，第一個出現的總是你，面對愛情朋友們常常都會覺得你是一個大傻瓜！
+          </ul>
+          <ul ng-if="A2">
+            <b>你選擇了「兩個人頭」<br></b> 你不擅長表達自己的內心，但個性卻很溫暖，你會默默的關心別人，又不會讓人覺得雞婆礙事，身邊的人經常都覺得有你真好！ 你對待朋友就像對待親人一樣周到，很熱衷於幫朋友的忙，兩肋插刀也在所不惜。對於另一半，你比較注重相處的感覺，外表則是其次，因此，當你認真地便不會輕易放手，用情很深的一個人！
+          </ul>
+          <ul ng-if="A3">
+            <b>你選擇了「兩個裸體」<br></b> 你是一個想法獨特的人，懂得察言觀色又不會隨波逐流，具有獨斷、領導的本能，你討厭輸的感覺，只要被激到你的爆發力可是會把人給嚇壞的！ 你的獨特性讓你在新環境中容易被注意到，所以很多人都想接近你，人緣很好！因為你的積極上進，經常有異性偷偷注意你，不過你在感情上卻不是很精明，常常都沒有察覺，因此而誤了戀情，多多注意周邊的異性吧！有很多人正偷偷的喜歡你呢！
+          </ul>
+          <hr>
+          <button ng-click="change1()">回上題</button>
+          <!-- 利用js建立function 將selection跳回上一題 -->
+          <button ng-click="change2()">重新作答</button>
+          <button ng-click="change3()">下一題</button>
+
+        </div>
+
+
+
+        <div ng-switch-when="第三題">
+          Test3
+          <br><b>你的脾氣好不好？<br></b>
+          <img src="http://www.zuopy.com/cover/4.jpg" width='bold' height='bold'>
+          <br> 在寒冷的空氣中，毛線會帶來溫暖的感覺，要是收到別人親手編織的毛線衣，更是幸福一路到底的心情。你會希望收到以下那種色彩的毛線衣呢？
+          <br>
+          <div ng-hide="A1">
+            <div ng-hide="A2">
+              <div ng-hide="A3">
+                <div ng-hide="A4">
+                  <button ng-click="A1 = !A1">綠色</button>
+                  <button ng-click="A2 = !A2">咖啡色</button>
+                  <button ng-click="A3 = !A3">粉色或紅色系</button>
+                  <button ng-click="A4 = !A4">白色或米白色系</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul ng-if="A1">
+            <b>你選擇了「綠色」<br></b> 你是個冷靜取勝的人，在你心裡，認為有理走遍天下，當有狀況發生時，你首先會壓抑怒氣，努力向對方說理，把事情是非交代清楚。這是你處理衝突的方法，但有時秀才也會遇到兵，碰上無理取鬧的人，有理也說不清時，那你可就會怒火中燒，儘快離開現場。
+          </ul>
+          <ul ng-if="A2">
+            <b>你選擇了「咖啡色」<br></b> 你平時是有話就說的人，因此當有人惹到你時，你也不會是忍氣吞聲的角色，尤其是對方沒理卻還敢大小聲，那就會立即點燃你不甘示弱的火氣，先發一頓脾氣是常態，給對方一點下馬威，宣示不是軟腳蝦的立場，雙方面紅耳赤的場面你也不會懼怕，反正有理你一定要爭到底，直到對方說對不起才罷休。
+          </ul>
+          <ul ng-if="A3">
+            <b>你選擇了「粉色或紅色系」<br></b> 當你和他人意見相左時，其實你不見得會生氣，要引爆你的脾氣火藥庫，除非是對方欺人太甚，尤其是採取欺騙你的手段，把黑說成白，最後要是被你發現，那事情可就大條了，這會讓你想要翻臉，徹底戳穿對方的假面具；就算你考慮其他因素，隱忍沒當場發作，以後再也不會信任曾欺騙你的人了。
+          </ul>
+          <ul ng-if="A4">
+            <b>你選擇了「白色或米白色系」<br></b> 要引爆你的脾氣導火線，是一件不簡單的任務，因為你生氣時，其實也不會當眾動怒，你寧願一個人默默生悶氣，也不想說出來，更不要說當場發飆罵人，失去了你的風度，但是你難看的臉色，還是向所有看到你的人，用ＳＮＧ宣告了非常不爽的心。
+          </ul>
+          <hr>
+          <button ng-click="change2()">回上題</button>
+          <button ng-click="change3()">重新作答</button>
+          <button ng-click="change4()">下一題</button>
+        </div>
+
+
+
+        <div ng-switch-when="第四題">
+          Test4
+          <br><b>性格與戀愛測試<br></b>
+          <img src="http://www.zuopy.com/cover/79.jpg" width='bold' height='bold'>
+          <br> 用直覺不要有任何思考，讓兩手的十指交握。
+          <br> A.左手拇指在上
+          <br> B.右手拇指在上
+          <br>
+          <br> 用直覺不要有任何思考，讓雙手交錯抱胸。
+
+          <br> C.右手臂在上
+          <br> D.左手臂在上
+          <br>
+          <div ng-hide="A1">
+            <div ng-hide="A2">
+              <div ng-hide="A3">
+                <div ng-hide="A4">
+                  <div ng-hide="A5">
+                    <div ng-hide="A6">
+                      <div ng-hide="A7">
+                        <div ng-hide="A8">
+                          <button ng-click="A1 = !A1">女：A，C</button>
+                          <button ng-click="A2 = !A2">女：A，D</button>
+                          <button ng-click="A3 = !A3">女：B、C</button>
+                          <button ng-click="A4 = !A4">女：B、D</button>
+                          <br>
+                          <button ng-click="A5 = !A5">男：A，C</button>
+                          <button ng-click="A6 = !A6">男：A，D</button>
+                          <button ng-click="A7 = !A7">男：B，C</button>
+                          <button ng-click="A8 = !A8">男：B，D</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul ng-if="A1">
+            <b>你選擇了「女：A，C」<br></b> A.左手拇指在上--意思是：接收訊息時，優先使用 ”感性”
+            <br> C.右手在上--意思是：傳達訊息時，優先使用 “感性” 為主的右腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 直覺行事的俠女：熱血又充滿個人魅力，會突然失控大笑或大哭，但都是出自真心，因此頗受朋友喜歡，最明顯的就是購買東西完全憑感覺，就算不實用或已有相同款式還是想買！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 單純的愛情至上者：以自己心理的感覺為主，不會參考對方或客觀因素來決定自己下一步舉動，若對對方很有好感，一整天就像春暖花開，如果對方疑似劈腿，也會驚天動地大哭一場，但也很容易變心！
+            <br>
+          </ul>
+          <ul ng-if="A2">
+            <b>你選擇了「女：A，D」<br></b> A.左手拇指在上--意思是：接收訊息時，優先使用 ”感性”
+            <br> D.左手在上--意思是：傳達訊息時，優先使用 “理性” 為主的左腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 人情的好聽眾：散發出安心，溫柔，善解人意的氣質，是一個人人都想跟妳說心事的好聽眾，如果別人苦苦哀求妳，總是很難拒絕別人！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 難以爽快脫身：雖然會理性評估對方，不過一但陷入熱戀，就完全被感性主導，當熱情不在時，很容易因對方對自己的依賴而無法爽快分手!
+            <br>
+          </ul>
+          <ul ng-if="A3">
+            <b>你選擇了「女：B、C」<br></b> B.右手拇指在上--意思是：接收訊息時，優先使用 “理性”
+            <br> C.右手在上--意思是：傳達訊息時，優先使用 “感性” 為主的右腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 陽剛味的大姊大：因為冷靜觀察與分析的性格，在同性之間很容易展現氣慨與責任感，常常是女生之間的大姊大，但掌握全場之餘又不失冷靜觀察！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 有目標的下手：操控自己的感覺，能冷靜分析對方是否適合自己，一旦鎖定目標，就會用盡方法維持熱度，雖然嚴謹以對，但內心總有一把不可告人的浪漫烈火！
+            <br>
+          </ul>
+          <ul ng-if="A4">
+            <b>你選擇了「女：B、D」<br></b> B.右手拇指在上--意思是：接收訊息時，優先使用 “理性”
+            <br> D.左手在上--意思是：傳達訊息時，優先使用 “理性” 為主的左腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 無堅不摧的鐵娘子，為人一本正經，給人精明幹練的距離感。
+            <br> 若跟莎莎女成為好友，則是值得依賴的好幫手，但成為敵人，就會非常難纏！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 想太多的自我設限：交往前會想太多，對戀愛小心翼翼，不過很容易因此放棄，對主動告白的異性會難以招架，不過要小心反被聰明誤！
+            <br>
+          </ul>
+          <ul ng-if="A5">
+            <b>你選擇了「男：A，C」<br></b> A.左手拇指在上--意思是：接收訊息時，優先使用 ”感性”
+            <br> C.右手在上--意思是：傳達訊息時，優先使用 “感性” 為主的右腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 永遠樂觀的國王：因為相信自己的直覺，所以會顯得自信滿滿，率直天真，壞處就是對不感興趣的事，也絲毫不想掩飾，會顯得興趣缺缺甚至默不關心！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 自我得意的攻勢：很容易自我沉溺在熱戀氣氛中，不過太過率直樂觀的個性，可能會誤解別人對你是否有好感，陷入自我得意的陷井中！
+            <br>
+          </ul>
+          <ul ng-if="A6">
+            <b>你選擇了「男：A，D」<br></b> A.左手拇指在上--意思是：接收訊息時，優先使用 ”感性”
+            <br> D.左手在上--意思是：傳達訊息時，優先使用 “理性” 為主的左腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 情義相挺的漢子：雖然看似冷酷，其實很重感情，會以直覺印象為出發點，然後再以堅決的步伐行事，就是那種看你順眼，就會收你做徒弟，挺你的那種大哥！
+            <br>
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 不打沒有把握的仗：戀愛成功機率很高，一旦確認對方也對自己有好感後，就會火力全開，不過愛得深，對女方的要求跟猜疑也很深！
+            <br>
+          </ul>
+          <ul ng-if="A7">
+            <b>你選擇了「男：B，C」<br></b> B.右手拇指在上--意思是：接收訊息時，優先使用 “理性”
+            <br> C.右手在上--意思是：傳達訊息時，優先使用 “感性” 為主的右腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 智囊分析者：喜歡探求理與擅長分析，常是旁人意見的給予者，給人一種冷靜穩當的感覺，不喜歡與人爭吵，很能妥善地處理事情！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 可能性至上：把自己喜不喜歡對方放在其次，反而以跟對方能否發展下去為第一前提，是個很適合愛情長跑或結婚的對象！
+            <br>
+          </ul>
+          <ul ng-if="A8">
+            <b>你選擇了「男：B，D」<br></b> B.右手拇指在上--意思是：接收訊息時，優先使用 “理性”
+            <br> D.左手在上--意思是：傳達訊息時，優先使用 “理性” 為主的左腦
+            <br>
+            <br> ﹝性格﹞
+
+            <br> 超級理性的數位人：完全以左腦為主的男性，以步驟跟數位為行事的准則，總是條理分明，不太能察覺感情，所以會給人固執，偏執的感覺！
+            <br>
+            <br> ﹝戀愛﹞
+
+            <br> 慢熱專情的完美主義：會在心中描繪完美形象，面對! 真實感情卻顯得慢熱自閉，一旦點燃熱情後，就會持續專情，就算對方回應冷淡，莎莎男仍念茲在茲，從一而終！
+            <br>
+          </ul>
+          <hr>
+          <button ng-click="change3()">回上題</button>
+          <button ng-click="change4()">重新作答</button>
+          <button ng-click="change5()">下一題</button>
+        </div>
+
+
+
+        <div ng-switch-when="第五題">
+          Test5
+          <br><b>壓力心理測試<br></b>
+          <img src="http://www.zuopy.com/cover/45.jpg" width='bold' height='bold'>
+          <br> 如圖，假設每一間都沒有人，請問你會選擇進入哪一間？
+          <br>
+          <div ng-hide="A1">
+            <div ng-hide="A2">
+              <div ng-hide="A3">
+                <div ng-hide="A4">
+                  <div ng-hide="A5">
+                    <div ng-hide="A6">
+                      <div ng-hide="A7">
+                        <div ng-hide="A8">
+                          <button ng-click="A1 = !A1">A</button>
+                          <button ng-click="A2 = !A2">B</button>
+                          <button ng-click="A3 = !A3">C</button>
+                          <button ng-click="A4 = !A4">D</button>
+                          <br>
+                          <button ng-click="A5 = !A5">E</button>
+                          <button ng-click="A6 = !A6">F</button>
+                          <button ng-click="A7 = !A7">G</button>
+                          <button ng-click="A8 = !A8">H</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <ul ng-if="A1">
+            <b>你選擇了「A」<br></b> 【承受壓力指數為8分】
+            <br>
+            <br> 你生命力旺盛，能快速瞭解別人的需要，善於理解複雜的人際關係，容易成為富貴中人。品味高，條件好，並重視個人成長，是一個極有智慧的人。 建議：容易自以為是而粗心犯錯，使別人深感困擾，不聽別人勸導而惹來煩惱，會因此而情緒失控，要記得小心，不要觸犯他人。
+          </ul>
+          <ul ng-if="A2">
+            <b>你選擇了「B」<br></b> 【承受壓力指數為3分】
+            <br>
+            <br> 你喜歡簡單樸實的人生，懇的生活態度，使圍繞在你身邊的人，很有自信和安全感，你會全力以赴地去照顧和體貼心愛的人和所有親朋好友，多愁善感是壓力指數的致命傷。 建議：使你最感驕傲的是人人都因你而有福，希望得到別人的鼓勵和讚揚，使你疲倦，不如放下標準，自由自在過自己的人生。
+          </ul>
+          <ul ng-if="A3">
+            <b>你選擇了「C」<br></b> 【承受壓力指數為9分】
+            <br>
+            <br> 懇地對待他人，使你能透視這個世界，找到純真善良一面，充滿自信又肯上進。你的特長是能找到機會，創造健康快樂人生，與人和平共處，人緣極佳。 建議：膽小怕事使你包容它人的缺點，任由他們做壞事，不知後果的嚴重性，小心受牽連，多交一些世故的朋友，幫助你認清事實。
+          </ul>
+          <ul ng-if="A4">
+            <b>你選擇了「D」<br></b> 【承受壓力指數為7分】
+            <br>
+            <br> 你有喜感十足的性格，活潑、浪漫、天真，像未失童心的人，永遠能陶醉在歡笑聲中，快樂時會想歡呼或手舞足蹈，你不會讓痛苦或不安打擾你歡愉的心情，是典型適者生存者。 建議：你的持續能力不長，有礙事業發展。若喜歡把事業放在娛樂之後，更需檢討人生失敗的原由，因為你會因此而導致太多困擾。
+          </ul>
+          <ul ng-if="A5">
+            <b>你選擇了「E」<br></b> 【承受壓力指數為6分】
+            <br>
+            <br> 個性細緻、敏感度很高，適合從事有創意的工作，工作能力很強。能主動關懷它人與事物，即使相貌平凡也露出純樸實在的氣質。你永遠都會把感情和事業放在非常重要地位。不斷走向前程。 建議：你是勇氣十足的人，膽識高人一等，但無法恰當表現自己你，應該先懂得生活，人際關係才會處理好，壓力因此而消失。
+          </ul>
+          <ul ng-if="A6">
+            <b>你選擇了「F」<br></b> 【承受壓力指數為4分】
+            <br>
+            <br> 容易為生活瑣碎擔心，不在乎物質生活，卻強調生活品味的重要，能理性分析事情，但又因缺乏感性生活而十分無奈。你需要同時兼具理性和感性的人生，才能感到滿足。 建議：當你無法承受生活壓力時，不妨讓自己平凡一點，別在乎別人的期望，因為常常是你自己設定了太高的期望，使自己無法喘息。
+          </ul>
+          <ul ng-if="A7">
+            <b>你選擇了「G」<br></b> 【承受壓力指數為5分】
+            <br>
+            <br> 你的個性孤獨又不能被他人肯定，使你不喜歡瞭解自己的缺失，像被丟掉的石頭，不知道它的價值何在，別人欠你的錢，你也懶得去追討，以不變應萬變的心態度過生活難題。 建議：只要你懂得努力追求自己所愛，堅持在一個固定的職業上，不在乎艱難日子，也能平安過一生，千萬不要三心兩意，使自己失去生活重心。
+          </ul>
+          <ul ng-if="A8">
+            <b>你選擇了「H」<br></b> 【承受壓力指數為10分】
+            <br>
+            <br> 你不在乎生活壓力時，什麽都可以看得很開，你的人生永遠在追求完美和理想，只要能幫助你完成或順利達成目標，你的苦幹精神無人可以比較。你的快樂是單純而自然，能時時知足又懂得不斷去追求。 建議：你不需要別人説明解決生活壓力，但需要別人指導解決生活難題，因此建議你多交一些有智慧和遠見的朋友。
+          </ul>
+          <hr>
+          <button ng-click="change4()">回上題</button>
+          <button ng-click="change5()">重新作答</button>
+          <button ng-click="change1()">回第一題</button>
+        </div>
+
+        <br>字體大小調整
+        <input type="number" ng-model="x" ng-init="x=14" ng-show="fontsize" />
+        <!-- 建立可供調整變數x的input 利用ng-init將x預設為14 並用ng-show將其隱藏-->
+        <button ng-click="addfontsize()" ng-if="x<24">加大</button>
+        <!-- 在js中建立function讓x在每次按下時加1 ng-if讓按鈕在x在小於24時才會顯示 -->
+        <button ng-click="refontsize()">還原</button>
+        <!-- 在js中建立function讓x直接變回預設的14 -->
+        <button ng-click="redfontsize()" ng-if="x>8">縮小</button>
+        <br>
+        <!-- 在js中建立function讓x在每次按下時減1 ng-if讓按鈕在x在大於8時才會顯示 -->
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
 
 </html>
