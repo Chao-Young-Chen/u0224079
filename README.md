@@ -62,14 +62,17 @@
 - 描述：為避免有字體過大或過小的問題發生，製作動態調整字體大小的功能
 - 優先性：8
 
-Leankit
+Trello
 
-- https://nationalkaohsiungfirs6606.leankit.com/Boards/View/198563178#workflow-view
+- https://trello.com/b/OtzIXQtZ/final-report
+![](http://i.imgur.com/sHQqnf4.jpg)
 
 Demo
 
-- http://embed.plnkr.co/4306P8Hq7QO4KmCvpywb/preview
+- http://embed.plnkr.co/igkUWim4jGTY15ASUgRc/preview
  
 Burndown chart
 
 - https://docs.google.com/spreadsheets/d/1N23SVxueESLRwgxuP7iuK7AePDa7nM5ONZ2M1a-a9I4/edit#gid=1779067574
+![](http://i.imgur.com/vpALCrD.jpg)
+![](http://i.imgur.com/lcEV93p.jpg)
