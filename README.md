@@ -63,6 +63,11 @@
 - 描述：為避免有字體過大或過小的問題發生，製作動態調整字體大小的功能
 - 優先性：8
 
+參考資料來源
+
+- http://www.zuopy.com/
+
+
 Trello
 
 - https://trello.com/b/OtzIXQtZ/final-report
