@@ -79,7 +79,7 @@ Demo
  
 Burndown chart
 
-- https://docs.google.com/spreadsheets/d/1N23SVxueESLRwgxuP7iuK7AePDa7nM5ONZ2M1a-a9I4/edit#gid=1779067574
+- https://docs.google.com/spreadsheets/d/1HIvaOZRYnMurMerE0kbGVm7kaoGFiFnjDyP7xDqf2dQ/edit?usp=sharing
 <hr>
 ![](http://i.imgur.com/vpALCrD.jpg)
 ![](http://i.imgur.com/lcEV93p.jpg)
